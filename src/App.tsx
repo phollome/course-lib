@@ -1,31 +1,29 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import Editor from "@monaco-editor/react";
+import clsx from "clsx";
+import React from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [editorCollapsed, setEditorCollapsed] = React.useState(false);
+
+  const editorContainerClasses = clsx(
+    editorCollapsed ? "w-0" : "w-full",
+    "h-dvh transition-width duration-300"
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex ">
+      <div className={editorContainerClasses}>
+        <Editor defaultLanguage="javascript" defaultValue="// code" />
       </div>
-      <h1 className="text-2xl">Vite + React</h1>
-      <div>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p>Click on the Vite and React logos to learn more</p>
-    </>
+      <button
+        className="px-2 self-stretch bg-slate-100"
+        onClick={() => {
+          setEditorCollapsed(!editorCollapsed);
+        }}
+      >
+        {editorCollapsed ? ">>" : "<<"}
+      </button>
+    </div>
   );
 }
 
