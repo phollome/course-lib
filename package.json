@@ -12,8 +12,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b ./tsconfig.lib.json && vite build",
+    "build:lib": "npm run build",
+    "build:app": "tsc -b ./tsconfig.app.json && vite build --config vite.app.config.js",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --config vite.app.config.js"
   },
   "peerDependencies": {
     "react": "^18.3.1",
