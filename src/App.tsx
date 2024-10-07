@@ -1,6 +1,7 @@
 import Editor from "@monaco-editor/react";
 import clsx from "clsx";
 import React from "react";
+import { Button } from "course-lib";
 
 function App() {
   const [editorCollapsed, setEditorCollapsed] = React.useState(false);
@@ -23,6 +24,7 @@ function App() {
       >
         {editorCollapsed ? ">>" : "<<"}
       </button>
+      <Button>Hello</Button>
     </div>
   );
 }
